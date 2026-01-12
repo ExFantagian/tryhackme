@@ -634,7 +634,7 @@ In Metasploit, set the LHOST to your VPN IP:    set LHOST 192.168.145.103
 followed walkthrough
 
 how to add /tmp to our path
-export PATH=$PATH:/tmp
+export PATH=$PATH:/tmp x should be prpending it instead: export PATH=/tmp:$PATH
 To verify it was added:
 echo $PATH
 Quick one-liner to add and verify:
