@@ -618,3 +618,17 @@ Use a different payload or method to reverse shell.
 Ensure that the reverse listener is set up and ready before triggering the payload.
 Try a different vector or method to establish a session.
 Make sure you have taken into account all necessary configurations and conditions for the exploit to succeed.
+
+cursor
+> why doesnt meterpreter session open
+
+The handler was listening on 192.168.241.128:4444, which is a private IP the target can't reach. Fixes:
+1) Use your TryHackMe VPN IP (recommended)
+Connect to the TryHackMe VPN first
+Find your VPN IP (usually on tun0)
+Set LHOST to that IP in Metasploit
+Checking for a VPN interface:
+You have a TryHackMe VPN connection. Your VPN IP is 192.168.145.103 (on tun0). Use this IP for the Metasploit handler.
+Fix:
+In Metasploit, set the LHOST to your VPN IP:    set LHOST 192.168.145.103
+followed walkthrough
