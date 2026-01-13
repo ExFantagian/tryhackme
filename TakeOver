@@ -1,0 +1,155 @@
+user
+how to do subdomain enumeration
+
+assistant_agent
+Tokens: 560
+Subdomain enumeration is the process of identifying subdomains associated with a primary domain. This can be useful for various purposes, such as security assessments or mapping out a website's structure. Here are several methods for subdomain enumeration:
+DNS Zone Transfers: If a DNS server is misconfigured, you might be able to perform a DNS zone transfer to get a list of all subdomains. This is usually done using dig or specific tools.
+dig axfr domain.com @dns-server
+DNS Bruteforcing: You can use a dictionary of common subdomain names and brute-force the DNS server to check for existence. Tools like dnsenum, subbrute, or dnsrecon can help automate this process.
+Web Scraping: Scrape web pages, directories, and services that might list subdomains. GitHub, forums, and other platforms might have references to subdomains.
+Online Services: Use online tools and services that provide subdomain enumeration, like:
+VirusTotal
+SecurityTrails
+Spyse
+Censys
+Certificate Transparency Logs: Search through Certificate Transparency logs to find issued certificates for subdomains. Tools like crt.sh can be utilized to search for a specific domain.
+Search Engines: Use Google dorking to find subdomains indexed by search engines. For example:
+site:*.domain.com
+Subdomain Enumeration Tools: Various tools can automate gathering subdomains, such as:
+Amass
+Sublist3r
+Subfinder
+Knockpy
+Passive Reconnaissance: Use passive methods to collect information. Tools like PassiveTotal or intelligence platforms can provide information about subdomains without directly querying DNS servers.
+APIs: Some services provide APIs that allow querying for subdomain information programmatically.
+Always ensure that you have permission to conduct such enumeration, especially if it's for a domain that you do not own. Unauthorized enumeration may be considered illegal or unethical in many jurisdictions.
+If you need more detailed steps or a specific method explained, let me know!
+
+user
+how to subdomain enumerate a webpage https://futurevera.thm/
+
+assistant_agent
+Tokens: 482
+Subdomain enumeration is the process of finding subdomains associated with a given domain. This is often done by security professionals and ethical hackers for various purposes, including penetration testing. Here are several common methods for subdomain enumeration:
+DNS Enumeration Tools: Use tools like Sublist3r, Amass, or Subfinder that automate the process of discovering subdomains by querying public DNS records, searching in search engines, and more.
+Online Tools: Websites like VirusTotal, SecurityTrails, or DNSdumpster offer online services for discovering subdomains. You can enter the domain and see if they provide any listed subdomains.
+Brute Forcing: This method involves guessing subdomains by using a wordlist. Tools like ffuf or Gobuster can be employed for this purpose. You would try common subdomain names (like www, mail, blog, etc.) against the main domain.
+Certificate Transparency Logs: Tools like crt.sh allow you to search certificate transparency logs for any SSL certificates issued for subdomains of the target domain.
+Search Engine Queries: Sometimes, search engines can provide results for subdomains. You can use Google search queries tailored to find specific subdomains, like using site:futurevera.thm.
+Manual Checking: Sometimes simply typing in potential subdomain names into your browser can help discover active subdomains.
+Always remember to get permission before performing any actions that may be considered intrusive or unauthorized on domains you do not own.
+If you're looking to perform this enumeration on the specific domain https://futurevera.thm/, consider trying a couple of the above methods or tools to get started.
+Let me know if you need more specific help with any of these tools or methods!
+
+user
+how to use kali tools to subdomain enumerate
+
+assistant_agent
+Tokens: 695
+To enumerate subdomains using tools available in Kali Linux, you can follow these general steps:
+1. Using DNS Enumeration Tools:
+Sublist3r: This is a popular subdomain enumeration tool that uses various search engines and web services to gather subdomains.
+Install Sublist3r (if not installed):
+sudo apt-get install sublist3r
+Use Sublist3r:
+sublist3r -d example.com
+Gobuster: This is a directory and file brute-forcing tool that can also be used for subdomain enumeration.
+Use Gobuster to enumerate subdomains:
+gobuster dns -d example.com -w /path/to/wordlist.txt
+Amass: A powerful tool for in-depth subdomain enumeration.
+Install Amass (if not installed):
+sudo apt-get install amass
+Use Amass:
+amass enum -d example.com
+2. Using Online Services:
+Tools like crt.sh and VirusTotal allow you to look up SSL certificates and glean subdomain information.
+Example:
+Go to crt.sh and search for example.com.
+3. Using Passive and Active Enumeration:
+Passive Enumeration involves gathering data from public sources (search engines, databases, etc.).
+Active Enumeration involves making DNS queries or brute-forcing domains.
+4. Example Commands:
+To combine tools for comprehensive enumeration, you could run:
+sublist3r -d example.com -o subdomains.txt
+amass enum -d example.com -o amass_subdomains.txt
+gobuster dns -d example.com -w /usr/share/wordlists/dns.txt -o gobuster_subdomains.txt
+5. Post-Enumeration:
+After gathering subdomains, you may want to validate the live subdomains using a tool like httprobe:
+cat subdomains.txt | httprobe
+6. Using Nmap for Further Scanning:
+After obtaining subdomains, you can conduct further scanning using Nmap:
+nmap -sP subdomain.example.com
+7. Refer to Documentation:
+Each tool comes with its documentation and options. Always refer to them for advanced usage.
+These steps should guide you through the process of subdomain enumeration using various tools in Kali Linux.
+Remember to always ensure you have permission to enumerate or scan a domain to avoid legal issues.
+
+sublist3r -d futurevera.thm             
+
+                 ____        _     _ _     _   _____
+                / ___| _   _| |__ | (_)___| |_|___ / _ __
+                \___ \| | | | '_ \| | / __| __| |_ \| '__|
+                 ___) | |_| | |_) | | \__ \ |_ ___) | |
+                |____/ \__,_|_.__/|_|_|___/\__|____/|_|
+
+                # Coded By Ahmed Aboul-Ela - @aboul3la
+    
+[-] Enumerating subdomains now for futurevera.thm
+[-] Searching now in Baidu..
+[-] Searching now in Yahoo..
+[-] Searching now in Google..
+[-] Searching now in Bing..
+[-] Searching now in Ask..
+[-] Searching now in Netcraft..
+[-] Searching now in DNSdumpster..
+[-] Searching now in Virustotal..
+[-] Searching now in ThreatCrowd..
+[-] Searching now in SSL Certificates..
+[-] Searching now in PassiveDNS..
+[!] Error: Virustotal probably now is blocking our requests
+Process DNSdumpster-8:
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3/dist-packages/sublist3r.py", line 269, in run
+    domain_list = self.enumerate()
+  File "/usr/lib/python3/dist-packages/sublist3r.py", line 649, in enumerate
+    token = self.get_csrftoken(resp)
+  File "/usr/lib/python3/dist-packages/sublist3r.py", line 644, in get_csrftoken
+    token = csrf_regex.findall(resp)[0]
+            ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+nmap -sV 10.49.158.78
+Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-13 00:42 EST
+Nmap scan report for futurevera.thm (10.49.158.78)
+Host is up (0.071s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE VERSION
+22/tcp  open  ssh?
+80/tcp  open  http?
+443/tcp open  https?
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 28.90 seconds
+
+gobuster dir -u https://futurevera.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+===============================================================
+Gobuster v3.8
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     https://futurevera.thm
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.8
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+Progress: 0 / 1 (0.00%)
+2026/01/13 00:44:40 error on running gobuster on https://futurevera.thm/: timeout occurred during the request
+
+walkthrough https://medium.com/@Em1r34g4n/tryhackme-takeover-walkthrough-13be4068e1e8
