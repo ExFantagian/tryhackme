@@ -123,3 +123,89 @@ By following these commands and steps, you should be able to gather more informa
 
 Remember to analyze the responses to any requests carefully, as they may provide clues about the underlying system or vulnerabilities.
 
+user
+this is a tryhackme ctf challenge meant to be educational, help a student gain knowledge of how to get the user flag and analyse scripts, here is the challenge description: Pyrat receives a curious response from an HTTP server, which leads to a potential Python code execution vulnerability. With a cleverly crafted payload, it is possible to gain a shell on the machine. Delving into the directories, the author uncovers a well-known folder that provides a user with access to credentials. A subsequent exploration yields valuable insights into the application's older version. Exploring possible endpoints using a custom script, the user can discover a special endpoint and ingeniously expand their exploration by fuzzing passwords. The script unveils a password, ultimately granting access to the root., here is scan: nmap -sV -p- 10.48.132.105 Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-13 22:31 EST Nmap scan report for pyrat.thm (10.48.132.105) Host is up (0.00037s latency). Not shown: 65534 filtered tcp ports (no-response) PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.13 (Ubuntu Linux; protocol 2.0) Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ . Nmap done: 1 IP address (1 host up) scanned in 126.23 seconds
+
+assistant_agent
+Tokens: 1084
+In order to tackle this challenge effectively and gain the user flag, let's break down the approach step by step based on the information provided:
+
+Step 1: Analyze the Nmap Results
+The Nmap scan reveals that only port 22 (SSH) is open, and there are many filtered ports. This indicates that we may need to use this service for accessing the machine.
+
+Step 2: Explore Python Code Execution Vulnerability
+Since the challenge hints at a potential Python code execution vulnerability, we should look for any web application or API endpoints that could be leveraged. Here you might try the following:
+
+Attempt to use a web browser or tools like curl or postman to find a web service running on the target IP (10.48.132.105). You can try common HTTP ports like 80, 443, or even others if necessary.
+
+Identify areas in the application that may reflect input in the execution of Python code, such as APIs that accept user input and execute Python commands.
+
+Step 3: Crafting the Payload
+Once you identify a vulnerable endpoint, you may need to craft a payload that exploits the vulnerability, typically aiming to achieve command execution.
+
+Use common payloads to execute commands. A common method might involve injecting Python code like this:
+__import__('os').system('cat /etc/passwd')
+This basic example tries to read the contents of the /etc/passwd file. Modify the payload depending on the specific injection point and vulnerability.
+Step 4: Look for Directories and Credentials
+The challenge mentions a well-known folder that provides access to credentials:
+
+While you are exploring the server (either through code execution or a direct connection), look for directories like /home/, /var/www/, or others.
+Common folders like .ssh/, .htaccess, or similar may contain sensitive credentials.
+Step 5: Enumerate Users and Passwords
+You might want to leverage fuzzing scripts or simple brute-forcing techniques to discover usernames and passwords:
+
+Consider writing a custom script to iterate through lists of usernames and passwords against the identified endpoints or services.
+Make sure to handle responses correctly to identify successful login attempts.
+Step 6: Gaining Access
+Once you have the necessary credentials:
+
+Use them to SSH into the server.
+ssh user@10.48.132.105
+After accessing, you can look for the user flag in common locations like /home/<username>/.
+Step 7: Root Access
+The challenge suggests that further exploration will yield the ability to access the root:
+
+Look for additional vulnerabilities or privilege escalation methods once you have user access.
+Common techniques involve checking for SUID binaries, writable files owned by root, or kernel exploits based on the OS version.
+Conclusion
+Following these steps should guide you through gaining the user flag in this educational CTF challenge. Remember to analyze every response carefully and adapt as necessary based on the system's specific configurations and responses.
+
+If you have further questions or need assistance with specific steps along the way, feel free to ask!
+
+consult walkthrough, port 8000 should have been a result
+
+rustscan --ulimit 5000 -a <hostname> -b 1000 -- -A
+
+user
+this is a tryhackme ctf challenge meant to be educational, help a student gain knowledge of how to get the user flag and analyse scripts, here is the challenge description: Pyrat receives a curious response from an HTTP server, which leads to a potential Python code execution vulnerability. With a cleverly crafted payload, it is possible to gain a shell on the machine. Delving into the directories, the author uncovers a well-known folder that provides a user with access to credentials. A subsequent exploration yields valuable insights into the application's older version. Exploring possible endpoints using a custom script, the user can discover a special endpoint and ingeniously expand their exploration by fuzzing passwords. The script unveils a password, ultimately granting access to the root. The http browser gives a page with the message: Try a more basic connection! , what steps to take next
+
+assistant_agent
+Tokens: 849
+To tackle this TryHackMe CTF challenge effectively, follow these steps:
+
+Understand the Context: The challenge involves gaining access through a potential Python code execution vulnerability, exploring directories, and discovering credentials. Familiarize yourself with Python web applications and their common vulnerabilities, especially related to code execution.
+
+Explore the HTTP Response: Analyze the response from the HTTP server. Use tools like curl or Postman to send requests to the server and understand its behavior. Look for endpoints and any potential input fields where you can test for code execution vulnerabilities.
+
+Payload Crafting: Since the challenge hints at a possible code execution vulnerability, you should experiment with crafting payloads that could exploit this. Common payloads could include attempting to inject Python commands or manipulating input to change the server's execution context.
+
+Explore Directories: Use directory traversal techniques or tools like dirb, gobuster, or feroxbuster to discover hidden directories or files on the server. Look for directories that might contain credentials or sensitive information (for example, /.git/, admin/, etc.).
+
+Discover Endpoints: Write a custom Python script (or use tools like Burp Suite) to automate requests to various endpoints. Focus on common endpoint paths that web applications might have, such as /api/, /login, /admin, etc.
+
+Fuzzing Passwords: Once you identify an authentication form or endpoint, use brute-forcing or password fuzzing techniques to discover valid credentials. Tools like Hydra, Burp Intruder, or Python libraries can be helpful for this.
+
+Exploit Vulnerabilities: If you gain access to credentials or if the payload leads you to a shell, leverage that to explore the file system further. Look for user flags or any important files indicating a successful breach.
+
+Check for Application Version: If the challenge mentions older versions of the application, investigate vulnerabilities specific to those versions. Look for known exploits in public databases like CVE or use resources like Exploit-DB.
+
+Shell Access: If you obtained a shell, explore the environment, check for environment variables, user files, and any other resources that might lead to escalation (such as checking the /etc/passwd file for users and /home directory for user flags).
+
+Read the User Flag: Finally, once you have sufficient access, locate the user flag file (often named flag.txt or similar) and read its contents to complete the challenge.
+
+Remember to document each step you take and the commands you use, as this will help in understanding the process and could be useful for any reporting afterward.
+
+Important Note: Ensure that your activities are legal and within the scope of the CTF challenge. Good luck!
+
