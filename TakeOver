@@ -1,6 +1,6 @@
-user
-how to do subdomain enumeration
-
+This challenge is about subdomain enumeration
+prompt: how to do subdomain enumeration
+-----------------------------
 assistant_agent
 Tokens: 560
 Subdomain enumeration is the process of identifying subdomains associated with a primary domain. This can be useful for various purposes, such as security assessments or mapping out a website's structure. Here are several methods for subdomain enumeration:
@@ -25,10 +25,9 @@ Passive Reconnaissance: Use passive methods to collect information. Tools like P
 APIs: Some services provide APIs that allow querying for subdomain information programmatically.
 Always ensure that you have permission to conduct such enumeration, especially if it's for a domain that you do not own. Unauthorized enumeration may be considered illegal or unethical in many jurisdictions.
 If you need more detailed steps or a specific method explained, let me know!
-
-user
-how to subdomain enumerate a webpage https://futurevera.thm/
-
+-----------------------------
+prompt: how to subdomain enumerate a webpage https://futurevera.thm/
+-----------------------------
 assistant_agent
 Tokens: 482
 Subdomain enumeration is the process of finding subdomains associated with a given domain. This is often done by security professionals and ethical hackers for various purposes, including penetration testing. Here are several common methods for subdomain enumeration:
@@ -41,10 +40,9 @@ Manual Checking: Sometimes simply typing in potential subdomain names into your 
 Always remember to get permission before performing any actions that may be considered intrusive or unauthorized on domains you do not own.
 If you're looking to perform this enumeration on the specific domain https://futurevera.thm/, consider trying a couple of the above methods or tools to get started.
 Let me know if you need more specific help with any of these tools or methods!
-
-user
-how to use kali tools to subdomain enumerate
-
+-----------------------------
+prompt: how to use kali tools to subdomain enumerate
+-----------------------------
 assistant_agent
 Tokens: 695
 To enumerate subdomains using tools available in Kali Linux, you can follow these general steps:
@@ -84,7 +82,9 @@ nmap -sP subdomain.example.com
 Each tool comes with its documentation and options. Always refer to them for advanced usage.
 These steps should guide you through the process of subdomain enumeration using various tools in Kali Linux.
 Remember to always ensure you have permission to enumerate or scan a domain to avoid legal issues.
-
+-----------------------------
+I tried step 1 but there were errors so I just looked up walkthrough.
+This was a short challenge and the flag was just in the search bar after going to the subdomain
 sublist3r -d futurevera.thm             
 
                  ____        _     _ _     _   _____
@@ -121,7 +121,7 @@ Traceback (most recent call last):
     token = csrf_regex.findall(resp)[0]
             ~~~~~~~~~~~~~~~~~~~~~~~~^^^
 IndexError: list index out of range
-
+-----------------------------
 nmap -sV 10.49.158.78
 Starting Nmap 7.95 ( https://nmap.org ) at 2026-01-13 00:42 EST
 Nmap scan report for futurevera.thm (10.49.158.78)
@@ -151,5 +151,3 @@ Starting gobuster in directory enumeration mode
 ===============================================================
 Progress: 0 / 1 (0.00%)
 2026/01/13 00:44:40 error on running gobuster on https://futurevera.thm/: timeout occurred during the request
-
-walkthrough https://medium.com/@Em1r34g4n/tryhackme-takeover-walkthrough-13be4068e1e8
